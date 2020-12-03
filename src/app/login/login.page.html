@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title style="color:white;">Chitchat</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>   
+  <form #userForm="ngForm">
+      <div class="form-group">
+        <label>Email</label>
+        <input type="text" #email class="form-control" >   
+      </div>
+       
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" #pass class="form-control" >   
+      </div>
+          
+      <ion-button type="submit" (click)="onlogin(email.value, pass.value)">Login</ion-button>  
+      <ion-label><a  routerLink="/register">Register</a></ion-label>
+     {{p_incorrect}}{{n_incorrect}}{{np_incorrect}} 
+    </form>
+</ion-content>

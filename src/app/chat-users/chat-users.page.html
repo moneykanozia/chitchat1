@@ -1,0 +1,26 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title style="width:345px;float:left;color:white;">ChitChat</ion-title>
+      <button style="background:#52f26e;color:white;height:30px;">@</button>
+      <button style="background:#52f26e;color:white;height:30px;">$</button>
+      <button style="background:#52f26e;color:white;height:30px;">:</button>
+    </ion-toolbar>  
+</ion-header>
+
+<ion-content style="background-color:grey;">
+  <div>  
+    <div slot="end">
+      <ion-input type='text' placeholder="Search"></ion-input>
+    </div>
+  </div>  
+  <ion-list>
+    <ion-item *ngFor="let datas of data" (click)="onclick(datas.name,datas.url)">
+      <ion-avatar slot="start">
+        <ion-img src={{datas.url}}></ion-img>
+      </ion-avatar>
+      <div><small>{{datas.name}}</small><br>
+           <small>{{datas.last_chat}}~~</small></div>
+      <div slot="end"><small>{{datas.date}}</small></div>
+    </ion-item>
+  </ion-list  >
+</ion-content>

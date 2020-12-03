@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title style="color:white;">Registration-Form</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <!-- <div class="form-group">
+      <label>Username</label>
+      <input type="text" #name class="form-control" >   
+    </div>
+      -->
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" #email class="form-control" >   
+    </div>
+    
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" #pasw class="form-control" >   
+    </div>
+
+    <ion-button type="submit" (click)="register(email.value,pasw.value)">Submit</ion-button>  
+  <a routerLink="/login">Login</a>
+
+</ion-content>

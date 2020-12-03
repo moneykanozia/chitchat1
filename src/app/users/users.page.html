@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>users</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-input #s_user placeholder="Search" (ionChange)="search_user(s_user.value)"></ion-input>
+  </ion-item>
+  <div *ngFor="let user of users" (click)="chattingpage(user.data.name,user.id)">
+      <ion-item>
+        <ion-avatar slot="start">
+        </ion-avatar>
+        <small>{{user.data.name}}</small>
+      </ion-item>
+  </div>
+</ion-content>

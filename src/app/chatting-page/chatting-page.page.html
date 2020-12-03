@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+      <div style="background-color:#52f26e;float:left;"><ion-avatar slot="start"><ion-img src={{u_url}} ></ion-img></ion-avatar></div>
+      <div style="background-color:#52f26e;"><ion-title>{{u_name}}</ion-title></div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngFor="let text of content_text">
+    {{text}}
+  </div>
+</ion-content>
+
+<ion-footer>
+  <input type="text" #inpt value="enter text" style="width:356px;height:39px;float:left;">
+  <ion-button (click)="clickbutton(inpt.value)">=></ion-button>
+</ion-footer>
