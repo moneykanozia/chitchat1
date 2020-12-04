@@ -71,8 +71,8 @@ export class ChatingPagePage implements OnInit {
     this.messages.push(this.temp[k]);
    }
    //this.messages=this._messages; 
-   this.messages.push(messageText);
-   console.log(this.messages);
+ //  this.messages.push(messageText);
+   //console.log(this.messages);
    const message = {
     attachmentUrl:"",
     CreatedAt: new Date(),
@@ -81,6 +81,7 @@ export class ChatingPagePage implements OnInit {
     senderId: this.uid,
     status: false
    };
+   this.messages.push(message);
    this.chtrmService.savemessage(this.merged_id, message);
   }
 }
