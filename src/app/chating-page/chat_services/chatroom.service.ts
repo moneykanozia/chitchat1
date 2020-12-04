@@ -24,7 +24,7 @@ export class ChatroomService {
     this.afs.collection("chats").doc(chat_id).collection("messages").valueChanges().subscribe(res=>{
       console.log(res)
       for(var i in res){
-        this.messages.push(res[i].messageText)
+        this.messages.push(res[i]);
       }      
     });
     console.log(this.messages);
