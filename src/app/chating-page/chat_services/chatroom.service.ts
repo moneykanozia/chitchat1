@@ -21,13 +21,12 @@ export class ChatroomService {
   
   
   getAllMessages(chat_id){
-    this.afs.collection("chats").doc(chat_id).collection("messages").valueChanges().subscribe(res=>{
-      console.log(res)
-      for(var i in res){
-        this.messages.push(res[i]);
-      }      
-    });
-    console.log(this.messages);
-    return this.messages;
+    return this.afs.collection("chats").doc(chat_id).collection("messages", ref=> ref.orderBy('CreatedAt')).valueChanges()
+    // .subscribe(res=>{
+    //   console.log(res)
+    //   for(var i in res){
+    //     this.messages.push(res[i]);
+    //   }      
+    // });
   }
 }

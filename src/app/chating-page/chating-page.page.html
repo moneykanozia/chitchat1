@@ -12,7 +12,7 @@
           <div class="inbox_msg">
             <div class="msg_history">
               <!-- <if message.senderId=> -->
-              <ng-container *ngFor='let message of messages'>
+              <ng-container *ngFor='let message of messages | async '>
                 <!-- {{message.senderId}}
                 {{uid}}   -->
                 <div class="incoming_msg" *ngIf="(message.senderId != uid); else myMsg">
