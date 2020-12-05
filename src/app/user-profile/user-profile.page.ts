@@ -4,6 +4,7 @@ import {Router,ActivatedRoute,ParamMap} from '@angular/router';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import {U_profile} from '../_classes/User';
 import { AuthenticationService } from '../_services/authentication.service'
+import {AngularFireStorage} from '@angular/fire/storage';
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.page.html',
@@ -14,7 +15,7 @@ export class UserProfilePage implements OnInit {
  email:string;
  subs = new Subscription();
  userDoc:AngularFirestoreDocument<U_profile>; 
- constructor(private activatedroute:ActivatedRoute,private router:Router,private afs:AngularFirestore,private auth:AuthenticationService) { }
+ constructor(private afstorage:AngularFireStorage,private activatedroute:ActivatedRoute,private router:Router,private afs:AngularFirestore,private auth:AuthenticationService) { }
 
   ngOnInit() {
     // this.activatedroute.paramMap.subscribe((params:ParamMap)=>{
@@ -38,7 +39,7 @@ export class UserProfilePage implements OnInit {
     this.subs.unsubscribe();
   }
 
-  profile_submit(name,dob,p_n,status){
+  profile_submit(name,dob,p_n,photo,status){
       console.log(name,dob,p_n,status)
       this.userDoc = this.afs.doc<U_profile>('users/'+this.uid);
       const updateUser= {
@@ -46,11 +47,17 @@ export class UserProfilePage implements OnInit {
         email:this.email,
         dob: dob,
         p_n:p_n,
-//        photo:photo,
+        photo:photo,
         status:status,
       }
       this.userDoc.set(updateUser);
       alert("profile detailed Successful!");
       this.router.navigate(['login']);
   }
+
+  uploadimage(photo){
+    var storageRef = this.afstorage.upload('/chatimages', {});
+
+  }
+
 }
