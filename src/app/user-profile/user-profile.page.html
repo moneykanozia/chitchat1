@@ -5,24 +5,44 @@
 </ion-header>
 
 <ion-content>
-  <form>
-    <div class="form-group">
+  <form [formGroup]="profileForm" class="form-group">
+    <div class="dp_upload">
+      <label>
+        <input type="file" (change)="uploadDP($event)" formControlName="profilePic"  class="form-control" style="display:none">
+        <div *ngIf="dpUrl; else noImg">
+          <ion-avatar>
+            <img src="dpUrl" />
+          </ion-avatar>
+        </div>
+        <ng-template #noImg>
+          <div class="user_img_circle">
+            <ion-avatar>
+              <img src="../../assets/images/default-user.png" />
+            </ion-avatar>
+          </div>
+        </ng-template>
+      </label>
+    </div> 
+      <div class="form-group">
       <label>Username</label>
-      <input #name type="text" class="form-control">  
+      <input type="text" formControlName="userName" class="form-control">  
+      <app-show-error [control]="profileForm.controls.userName" fieldName="User name"></app-show-error>
     </div>
     <div class="form-group">
       <label>DOB</label>
-      <input #dob type="text" class="form-control">  
+      <input type="date" formControlName="DOB" class="form-control">  
+      <app-show-error [control]="profileForm.controls.DOB" fieldName="DOB"></app-show-error>
     </div>
     <div class="form-group">
       <label>Phone Number</label>
-      <input #p_n type="phone" class="form-control">  
+      <input type="phone" formControlName="phone" class="form-control">  
+      <app-show-error [control]="profileForm.controls.phone" fieldName="Phone"></app-show-error>
     </div>
-    <input #photo type="file" class="form-control">  
     <div class="form-group">
       <label>Status</label>
-      <input #status type="status" class="form-control">  
+      <input type="status" formControlName="status" class="form-control">  
+      <app-show-error [control]="profileForm.controls.status" fieldName="status"></app-show-error>
     </div>
-    <ion-button (click)="profile_submit(name.value,dob.value,p_n.value,photo.value,status.value)">Submit</ion-button>
+    <ion-button (click)="profile_submit()">Submit</ion-button>
   </form>
 </ion-content>
